@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Please select Add-ons...</h2>
+<mat-divider inset></mat-divider>
+<mat-dialog-content class="mat-typography avs-margin-top8">
+    <p>
+        Choice Of Base <br> ( Can select upto 1 items. )
+    </p>
+    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="selectedBase">
+        <mat-radio-button class="example-radio-button" *ngFor="let list of pizzaBaseList" [value]="list">
+            {{list.name}} - {{list.price | currency : 'INR'}}
+        </mat-radio-button>
+    </mat-radio-group>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="selectedBase" cdkFocusInitial>Add To Cart</button>
+</mat-dialog-actions>

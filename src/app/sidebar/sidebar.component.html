@@ -1,0 +1,28 @@
+<div class="avs-container">
+    <mat-toolbar color="accent" class="avs-toolbar">
+        <button mat-icon-button>
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1 class="avs-app-name">Welcome to Pizzeria</h1>
+        <span class="avs-spacer"></span>
+        <button mat-icon-button class="avs-icon favorite-icon" aria-label="cart" (click)="onCartClick()">
+            <mat-icon [matBadge]="cartCount" matBadgeColor="primary">shopping_cart</mat-icon>
+          </button>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="avs-sidenav-container" autosize>
+        <mat-sidenav #snav class="example-sidenav" [mode]="'side'" opened="true">
+            <mat-nav-list>
+                <mat-list-item *ngFor='let item of sideNaveList'>
+                    <p matLine routerLink="{{item.redirectUrl}}">{{item.displayName}}</p>
+                </mat-list-item>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <div class="avs-sidenav-content">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

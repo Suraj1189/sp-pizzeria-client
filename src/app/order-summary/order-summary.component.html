@@ -1,0 +1,44 @@
+<div class="avs-margin-top8">
+    <mat-card class="avs-card">
+        <mat-card-header>
+            <p>Order Summary</p>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <div class="row" *ngFor="let cart of order.cartList">
+                <mat-grid-list cols="2" rowHeight="100px">
+                    <mat-grid-tile>
+                        <P>
+                            <mat-label> {{ cart.pizzaDTO ? cart.pizzaDTO.name : cart.nonPizzaDTO.name}}</mat-label><br/> {{cart.pizzaDTO.description}}</P>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        {{cart.price | currency:'INR'}}
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <mat-divider></mat-divider>
+            </div>
+            <mat-grid-list cols="2" rowHeight="50px">
+                <mat-grid-tile>Item Total</mat-grid-tile>
+                <mat-grid-tile> {{ ItemTotal| currency:'INR' }}</mat-grid-tile>
+                <mat-grid-tile>Delivery Charges</mat-grid-tile>
+                <mat-grid-tile> {{ deliveryCharges | currency:'INR' }}</mat-grid-tile>
+            </mat-grid-list>
+            <mat-divider></mat-divider>
+            <mat-grid-list cols="2" rowHeight="50px">
+                <mat-grid-tile>Sub Total</mat-grid-tile>
+                <mat-grid-tile> {{ subtotal | currency:'INR' }}</mat-grid-tile>
+                <mat-grid-tile>GST (5%)</mat-grid-tile>
+                <mat-grid-tile> {{ gst | currency:'INR' }}</mat-grid-tile>
+            </mat-grid-list>
+            <mat-divider></mat-divider>
+            <mat-grid-list cols="2" rowHeight="50px">
+                <mat-grid-tile>Payable Amount</mat-grid-tile>
+                <mat-grid-tile> {{ order.totalAmount | currency:'INR' }}</mat-grid-tile>
+            </mat-grid-list>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions align="end">
+            <button mat-raised-button color="primary" (click)="onDoneClick()">Done</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

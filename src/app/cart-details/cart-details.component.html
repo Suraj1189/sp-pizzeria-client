@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Cart Details</h1>
+<mat-divider class="avs-margin-top8"></mat-divider>
+<mat-dialog-content class="mat-typography avs-margin-top8">
+
+    <div class="row" *ngFor="let cart of data">
+        <mat-grid-list cols="2" rowHeight="50px">
+            <mat-grid-tile>{{ cart.pizzaDTO ? cart.pizzaDTO.name : cart.nonPizzaDTO.name}}</mat-grid-tile>
+            <mat-grid-tile>
+                <button mat-icon-button class="avs-icon favorite-icon" aria-label="cart" (click)="onDeleteClick(cart)">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                {{cart.price | currency:'INR'}}
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <button mat-icon-button color="primary" (click)="onMinusClick(cart)">
+                    <mat-icon>remove</mat-icon>
+                  </button> {{cart.quantity}}
+                <button mat-icon-button color="primary" (click)="onPlusClick(cart)">
+                    <mat-icon>add</mat-icon>
+                  </button>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <mat-divider></mat-divider>
+    </div>
+    <mat-grid-list cols="2" rowHeight="50px">
+        <mat-grid-tile>Item Total</mat-grid-tile>
+        <mat-grid-tile> {{ ItemTotal | currency:'INR' }}</mat-grid-tile>
+        <mat-grid-tile>Delivery Charges</mat-grid-tile>
+        <mat-grid-tile> {{ deliveryCharges | currency:'INR' }}</mat-grid-tile>
+    </mat-grid-list>
+    <mat-divider></mat-divider>
+    <mat-grid-list cols="2" rowHeight="50px">
+        <mat-grid-tile>Sub Total</mat-grid-tile>
+        <mat-grid-tile> {{ subtotal | currency:'INR' }}</mat-grid-tile>
+        <mat-grid-tile>GST (5%)</mat-grid-tile>
+        <mat-grid-tile> {{ gst | currency:'INR' }}</mat-grid-tile>
+    </mat-grid-list>
+    <mat-divider></mat-divider>
+    <mat-grid-list cols="2" rowHeight="50px">
+        <mat-grid-tile>Payable Amount</mat-grid-tile>
+        <mat-grid-tile> {{ finalAmount | currency:'INR' }}</mat-grid-tile>
+    </mat-grid-list>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="cartModalCallBack" cdkFocusInitial>Add To Cart</button>
+</mat-dialog-actions>

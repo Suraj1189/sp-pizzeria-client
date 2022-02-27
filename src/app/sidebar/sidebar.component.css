@@ -1,0 +1,27 @@
+.avs-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+h1.avs-app-name {
+    margin-left: 8px;
+}
+
+.avs-sidenav-container {
+    flex: 1;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.avs-sidenav-content {
+    /* // display: flex; */
+    height: 100%;
+    width: 100%;
+}

@@ -1,0 +1,28 @@
+<mat-toolbar color="default" class="avs-menubar">
+
+    <span class="avs-spacer"></span>
+</mat-toolbar>
+
+<div class="avs-margin-top8">
+    <mat-card class="avs-card" *ngFor="let side of filterList">
+        <mat-card-header>
+            <img class="avs-pizza-image" mat-card-image src="{{side.imageURL}}">
+        </mat-card-header>
+        <mat-card-content>
+            <mat-label>
+                {{side.name}}
+            </mat-label>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions>
+            <div>
+                <div class="avs-card-price">
+                    {{side.price | currency :'INR'}}
+                </div>
+                <div class="avs-card-add">
+                    <button mat-raised-button color="primary" (click)="onAddClick(side)">Add</button>
+                </div>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+</div>
